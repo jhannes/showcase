@@ -1,0 +1,23 @@
+{
+  "name": "js_tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --growl",
+    "karma": "karma",
+    "mocha": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-cli": "0.0.4",
+    "karma-growl": "^0.1.0",
+    "karma-mocha": "^0.1.10",
+    "mocha": "^2.2.4"
+  }
+}
