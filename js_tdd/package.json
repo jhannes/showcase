@@ -19,5 +19,8 @@
     "karma-growl": "^0.1.0",
     "karma-mocha": "^0.1.10",
     "mocha": "^2.2.4"
+  },
+  "dependencies": {
+    "lodash": "^3.6.0"
   }
 }
