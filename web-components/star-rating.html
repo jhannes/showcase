@@ -1,0 +1,99 @@
+<template id="star-rating">
+  <style>
+  :host {
+    -webkit-appearance: none;
+    color: inherit;
+    background-color: inherit;
+  }
+  #starfield a.hover {
+    color: silver;
+  }
+  #starfield a.selected {
+    color: gold;
+  }
+  </style>
+
+  <span id="starfield"></span>
+</template>
+
+<script>
+var importDoc = document.currentScript.ownerDocument;
+var template = importDoc.querySelector('template#star-rating');
+
+var RatingPrototype = Object.create(HTMLInputElement.prototype, {
+  createdCallback: {
+    value: function () {
+      console.log("attributes", this.attributes);
+      this.min = this.attributes.min ? parseInt(this.attributes.min.value) : 0;
+      this.max = this.attributes.max ? parseInt(this.attributes.max.value) : 5;
+      this.step = 1;
+      this.value = this.attributes.value ? parseInt(this.attributes.value.value) : 0;
+
+      var root = this.createShadowRoot();
+      root.appendChild( template.content.cloneNode(true) );
+      var el = root.querySelector('#starfield');
+      var els = el.querySelectorAll("a");
+      for (var star = this.min; star < this.max; star++ ) {
+        el.innerHTML += "<a>★</a>";
+        console.log("add star");
+      }
+
+      var els = el.querySelectorAll("a");
+      var items = Array.prototype.slice.call(els);
+      var addOrRemoveClass = function (name, index) {
+        items.slice(0, index).forEach(function (item) {
+          item.classList.add(name);
+        });
+        items.slice(index).forEach(function (item) {
+          item.classList.remove(name);
+        });
+      };
+
+      var setValue = function (newValue) {
+        console.log("Set value");
+        var changed = this.value != newValue;
+        this.value = newValue;
+        addOrRemoveClass('selected', this.value);
+        if (changed)  {
+          this.dispatchEvent(new Event('change'));
+        }
+      }.bind(this);
+
+      items.forEach(function (item, index) {
+        item.addEventListener('click', function (evt) {
+          evt.preventDefault();
+          setValue(index + 1);
+        });
+
+        item.addEventListener('mouseover', function (evt) {
+          addOrRemoveClass('hover', index + 1);
+        });
+        item.addEventListener('mouseout', function (evt) {
+          addOrRemoveClass('hover', 0);
+        });
+      });
+      setValue(this.value);
+    }
+  },
+  attributeChangedCallback: {
+    value: function(attrName, oldValue, newValue) {
+      console.log("attribute changed", arguments);
+      if (attrName === "value") {
+        var els = this.shadowRoot.querySelectorAll('#starfield a');
+        var items = Array.prototype.slice.call(els);
+        items.slice(0, newValue).forEach(function (item) {
+          item.classList.add("selected");
+        });
+        items.slice(newValue).forEach(function (item) {
+          item.classList.remove("selected");
+        });
+      }
+    }
+  }
+});
+
+var RatingElement = document.registerElement('star-rating', {
+  prototype: RatingPrototype,
+  extends: 'input'
+});
+</script>
