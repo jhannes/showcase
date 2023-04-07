@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello world!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: aliceblue;
+        }
+
+        .wrapper {
+            max-width: 80ch;
+            margin: auto;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            transition: transform 1s ease-in-out;
+        }
+
+        #container section {
+            width: 100%;
+            flex-shrink: 0;
+            background-color: aqua;
+        }
+
+        #container.secondary {
+            transform: translateX(-100%);
+        }
+
+        .secondary.hide {
+            display: none;
+        }
+
+    </style>
+    <script>
+        function handlePrimary() {
+            document.getElementById("container").classList.toggle("secondary");
+            //document.querySelectorAll(".secondary").forEach(e => e.classList.add("hide"));
+        }
+
+        function handleSecondary() {
+            document.getElementById("container").classList.toggle("secondary");
+            document.querySelectorAll(".secondary").forEach(e => e.classList.add("hide"));
+            document.querySelector(".secondary .one").classList.remove("hide");
+        }
+
+        function handleSecondaryTwo() {
+            document.getElementById("container").classList.toggle("secondary");
+            document.querySelectorAll(".secondary").forEach(e => e.classList.add("hide"));
+            document.querySelector(".secondary .two").classList.remove("hide");
+        }
+    </script>
+</head>
+<body>
+
+<div style="padding: 2rem; height: calc(100vh - 4rem) ">
+    <h2>Show/ hide</h2>
+    <div class="wrapper">
+        <div id="container">
+            <section>
+                <div style="margin: 2rem">
+                    <h2>This is the main content</h2>
+                    <button onclick="handleSecondary()">Toggle</button>
+                    <button onclick="handleSecondaryTwo()">Toggle</button>
+
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci corporis dicta dignissimos
+                        error exercitationem ipsam iusto maiores modi mollitia nulla officia provident quaerat sapiente
+                        sit, sunt velit voluptas, voluptatem voluptatibus.
+                    </div>
+                </div>
+            </section>
+            <section class="secondary one hide" style="background-color: antiquewhite">
+                <div style="margin: 2rem">
+                    <h2>This is the secondary content</h2>
+                    <button onclick="handlePrimary()">Toggle</button>
+
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias asperiores dolorem
+                        eaque illo illum ipsam itaque, officiis voluptate! Accusantium culpa eius hic laboriosam
+                        pariatur quas quidem, rem similique voluptatibus!
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur aut, dicta dignissimos
+                        ex impedit ipsam maiores minima modi non nulla odit officia optio, pariatur quaerat quidem
+                        recusandae repellat sint sit soluta, tempora ut veniam vitae? Architecto culpa dignissimos
+                        doloribus ea earum ex, expedita voluptatum. Ab aspernatur at culpa dolore doloremque expedita
+                        facere facilis fugiat illum impedit, itaque laborum maiores molestiae nisi nostrum odit, quos,
+                        sequi soluta tempora tempore ut vero voluptas? Atque consequuntur eligendi numquam omnis!
+                        Consequatur eligendi exercitationem id incidunt iste molestiae nemo nesciunt nisi vel! Doloribus
+                        ducimus minus suscipit voluptate. Assumenda consectetur delectus eius hic laboriosam minus
+                        molestiae, odit provident quaerat quam, reprehenderit rerum suscipit voluptatum! Accusamus dicta
+                        magni modi quae voluptatibus. Accusamus autem beatae consequatur debitis eligendi est fugit
+                        inventore labore molestiae nostrum perspiciatis porro, quam quo saepe similique soluta, tempore
+                        veniam, voluptate. A, accusamus alias aliquid atque consectetur consequuntur dicta eveniet
+                        expedita facere fugiat hic natus nemo omnis optio quam repudiandae velit. Accusamus alias animi
+                        aperiam assumenda aut consectetur cumque delectus dolore dolores dolorum ea eius ex facere
+                        maxime molestiae molestias mollitia necessitatibus nemo nisi, non odio officia optio pariatur
+                        possimus, praesentium, quasi quidem sapiente totam voluptatem voluptates! Dignissimos est, illo
+                        incidunt maiores porro quam?</p>
+                </div>
+            </section>
+            <section class="secondary two hide" style="background-color: pink">
+                <div style="margin: 2rem">
+                    <h2>This is the secondary two content</h2>
+                    <button onclick="handlePrimary()">Toggle</button>
+
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias asperiores dolorem
+                        eaque illo illum ipsam itaque, officiis voluptate! Accusantium culpa eius hic laboriosam
+                        pariatur quas quidem, rem similique voluptatibus!
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur aut, dicta dignissimos
+                        ex impedit ipsam maiores minima modi non nulla odit officia optio, pariatur quaerat quidem
+                        recusandae repellat sint sit soluta, tempora ut veniam vitae? Architecto culpa dignissimos
+                        doloribus ea earum ex, expedita voluptatum. Ab aspernatur at culpa dolore doloremque expedita
+                        facere facilis fugiat illum impedit, itaque laborum maiores molestiae nisi nostrum odit, quos,
+                        sequi soluta tempora tempore ut vero voluptas? Atque consequuntur eligendi numquam omnis!
+                        Consequatur eligendi exercitationem id incidunt iste molestiae nemo nesciunt nisi vel! Doloribus
+                        ducimus minus suscipit voluptate. Assumenda consectetur delectus eius hic laboriosam minus
+                        molestiae, odit provident quaerat quam, reprehenderit rerum suscipit voluptatum! Accusamus dicta
+                        magni modi quae voluptatibus. Accusamus autem beatae consequatur debitis eligendi est fugit
+                        inventore labore molestiae nostrum perspiciatis porro, quam quo saepe similique soluta, tempore
+                        veniam, voluptate. A, accusamus alias aliquid atque consectetur consequuntur dicta eveniet
+                        expedita facere fugiat hic natus nemo omnis optio quam repudiandae velit. Accusamus alias animi
+                        aperiam assumenda aut consectetur cumque delectus dolore dolores dolorum ea eius ex facere
+                        maxime molestiae molestias mollitia necessitatibus nemo nisi, non odio officia optio pariatur
+                        possimus, praesentium, quasi quidem sapiente totam voluptatem voluptates! Dignissimos est, illo
+                        incidunt maiores porro quam?</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
